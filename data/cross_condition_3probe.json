@@ -1,0 +1,195 @@
+{
+  "metadata": {
+    "date": "2026-04-26",
+    "metric": "d(i,j) = |cc_10(i) - cc_10(j)|",
+    "n_bootstrap": 1000,
+    "betweenness_eps": 0.05,
+    "bin_width": 0.05,
+    "probes": [
+      "Q1_disagreement",
+      "Q3_voice",
+      "B4_depth"
+    ]
+  },
+  "cc_10": {
+    "Q1_disagreement": {
+      "point": 0.8325546109775293,
+      "se": 2.0901067350039537e-11,
+      "ci_lo": 0.8325546109775293,
+      "ci_hi": 0.8325546110375855
+    },
+    "Q3_voice": {
+      "point": 0.8325546098965192,
+      "se": 3.0491584455042436e-10,
+      "ci_lo": 0.8325546100166313,
+      "ci_hi": 0.8325546103769682
+    },
+    "B4_depth": {
+      "point": 0.832554609836463,
+      "se": 3.0669860065910786e-10,
+      "ci_lo": 0.8325546099565753,
+      "ci_hi": 0.832554610316912
+    }
+  },
+  "cc_1": {
+    "Q1_disagreement": {
+      "point": 0.0,
+      "se": 0.0,
+      "ci_lo": 0.0,
+      "ci_hi": 0.0
+    },
+    "Q3_voice": {
+      "point": 0.8325546109775294,
+      "se": 1.2603794539756766e-11,
+      "ci_lo": 0.8325546109775293,
+      "ci_hi": 0.8325546110375855
+    },
+    "B4_depth": {
+      "point": 0.3424572040102881,
+      "se": 0.04239993879830896,
+      "ci_lo": 0.25853641811638656,
+      "ci_hi": 0.42888583691373383
+    }
+  },
+  "token_info": {
+    "Q1_disagreement": {
+      "top_card_token": "I",
+      "top_card_pct": 100.0,
+      "top_base_token": "I",
+      "top_base_pct": 100.0
+    },
+    "Q3_voice": {
+      "top_card_token": "*sets",
+      "top_card_pct": 94.0,
+      "top_base_token": "I",
+      "top_base_pct": 100.0
+    },
+    "B4_depth": {
+      "top_card_token": "This",
+      "top_card_pct": 70.0,
+      "top_base_token": "This",
+      "top_base_pct": 100.0
+    }
+  },
+  "first_token_distributions": {
+    "Q1_disagreement": {
+      "card": {
+        "I": 1.0
+      },
+      "base": {
+        "I": 1.0
+      }
+    },
+    "Q3_voice": {
+      "card": {
+        "*sets": 0.94,
+        "*pauses,": 0.06
+      },
+      "base": {
+        "I": 1.0
+      }
+    },
+    "B4_depth": {
+      "card": {
+        "This": 0.7,
+        "I": 0.3
+      },
+      "base": {
+        "This": 1.0
+      }
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "confirmed": true,
+      "result": "**CONFIRMED** \u2014 10-token level: all saturate at \u221a(ln 2) = 0.8326 (metric does not discriminate). Single-token level: cc_1(Q1)=0.0000 < cc_1(Q3)=0.8326 (confirmed)."
+    },
+    "H2": {
+      "confirmed": true,
+      "result": "**CONFIRMED** \u2014 cc_1(Q1)=0.0000 (\u22480), cc_1(Q3)=0.8326 (\u2248\u221aln2)"
+    },
+    "H3": {
+      "confirmed": true,
+      "result": "**CONFIRMED** [cc_1 metric] \u2014 d(Q1,Q3)=0.8326, d(Q1,B4)=0.3425, d(Q3,B4)=0.4901"
+    }
+  },
+  "distance_matrix_cc": [
+    [
+      0.0,
+      1.0810100592451022e-09,
+      1.1410662414945705e-09
+    ],
+    [
+      1.0810100592451022e-09,
+      0.0,
+      6.005618224946829e-11
+    ],
+    [
+      1.1410662414945705e-09,
+      6.005618224946829e-11,
+      0.0
+    ]
+  ],
+  "distance_matrix_cc_1": [
+    [
+      0.0,
+      0.8325546109775294,
+      0.3424572040102881
+    ],
+    [
+      0.8325546109775294,
+      0.0,
+      0.49009740696724124
+    ],
+    [
+      0.3424572040102881,
+      0.49009740696724124,
+      0.0
+    ]
+  ],
+  "magnitude_cc": 1.4098333241605077,
+  "weights_cc": [
+    0.5847872834133974,
+    0.6201293786668566,
+    0.20491666208025366
+  ],
+  "betweenness_cc": {
+    "('Q1', 'Q3', 'B4')": false,
+    "('Q1', 'B4', 'Q3')": true,
+    "('Q3', 'Q1', 'B4')": false,
+    "('Q3', 'B4', 'Q1')": true,
+    "('B4', 'Q1', 'Q3')": false,
+    "('B4', 'Q3', 'Q1')": false
+  },
+  "homology_ranks_cc": {
+    "0": {
+      "0": 3,
+      "6": 0,
+      "9": 0,
+      "16": 0,
+      "23": 0,
+      "26": 0
+    },
+    "1": {
+      "0": 0,
+      "6": 2,
+      "9": 2,
+      "16": 0,
+      "23": 0,
+      "26": 0
+    },
+    "2": {
+      "0": 0,
+      "6": 0,
+      "9": 0,
+      "16": 0,
+      "23": 2,
+      "26": 2
+    }
+  },
+  "baseline_comparison": {
+    "issue_14_magnitude": 1.6044,
+    "cc_magnitude": 1.4098333241605077,
+    "delta": -0.1945666758394924
+  }
+}
