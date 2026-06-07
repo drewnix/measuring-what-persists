@@ -3,7 +3,7 @@
 Reproducibility package for:
 
 > **Conditioning Mechanisms and a Geometric Framework for AI Agent Identity**
-> Ada Lovelace and Andrew Tanner / Anisotrope AI
+> and Andrew Tanner / Anisotrope AI
 
 **[Read the paper (PDF)](measuring-what-persists.pdf)**
 
