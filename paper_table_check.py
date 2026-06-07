@@ -124,14 +124,12 @@ def check_section2_framework(data):
     l1, l2 = eigenvalues_equilateral(3)
     check("λ₁ = 1 + 2a", l1, 1 + 2 * a, tol=1e-10)
     check("λ₂ = λ₃ = 1 - a", l2, 1 - a, tol=1e-10)
-    warn("Paper eigenvalues",
-         f"Paper says λ₁ ≈ 1.8616, λ₂ ≈ 0.5692. "
-         f"Correct: λ₁ = {l1:.4f}, λ₂ = {l2:.4f}. "
-         f"Paper values correspond to a ≈ 0.4308 (d ≈ 0.842), not a = e^(-√ln2) ≈ 0.4349 (d ≈ 0.833)")
+    check("Paper λ₁ ≈ 1.87 (rounded)", round(l1, 2), 1.87, tol=0.005)
+    check("Paper λ₂ ≈ 0.57 (rounded)", round(l2, 2), 0.57, tol=0.005)
 
     kappa = condition_number(3)
     check("κ(Z)", kappa, (1 + 2 * a) / (1 - a), tol=1e-10)
-    warn("Paper κ(Z)", f"Paper says ≈ 3.27. Correct: {kappa:.4f}")
+    check("Paper κ(Z) ≈ 3.31", kappa, 3.31, tol=0.005)
 
     bound_coeff = worst_case_bound_coefficient(3)
     check("Bound coefficient n·(1/(1-a))²", bound_coeff, 3 * (1 / (1 - a)) ** 2, tol=1e-10)
@@ -149,7 +147,7 @@ def check_section2_framework(data):
     z_inv_1 = Z_inv @ np.ones(3)
     expected_val = 1 / (1 + 2 * a)
     check("Z⁻¹·1 = (1/(1+2a))·1", z_inv_1[0], expected_val, tol=1e-10)
-    warn("Paper Z⁻¹·1", f"Paper says ≈ 0.5372. Correct: {expected_val:.4f}")
+    check("Paper Z⁻¹·1 ≈ 0.535", expected_val, 0.535, tol=0.001)
 
     ratio = coefficient_ratio()
     check("(1-a)²/(1+2a)² ≈ 0.09", ratio, (1 - a) ** 2 / (1 + 2 * a) ** 2, tol=1e-10)
@@ -401,7 +399,7 @@ def check_bootstrap(data):
 
 
 def check_perturbation_theory(data):
-    section("Appendix A: Perturbation Theory Predictions")
+    section("Appendix A: Perturbation Theory (Self-Consistency)")
 
     drift = data["drift"]
     if drift is None:
@@ -445,23 +443,23 @@ def check_perturbation_theory(data):
     obs_medium = scalar_magnitude(D_medium) - baseline_mag
     obs_long = scalar_magnitude(D_long) - baseline_mag
 
-    check("Medium predicted δ|M|", pred_medium, -0.01690, tol=0.0002, fmt=".5f")
+    check("Medium first-order δ|M|", pred_medium, -0.01690, tol=0.0002, fmt=".5f")
     check("Medium observed δ|M|", obs_medium, -0.01693, tol=0.0002, fmt=".5f")
 
     agreement_medium = abs(pred_medium - obs_medium) / abs(obs_medium) * 100
-    check("Medium agreement %", agreement_medium, 0.19, tol=0.15, fmt=".2f")
+    check("Medium self-consistency %", agreement_medium, 0.19, tol=0.15, fmt=".2f")
 
-    check("Long predicted δ|M|", pred_long, -0.01557, tol=0.0002, fmt=".5f")
+    check("Long first-order δ|M|", pred_long, -0.01557, tol=0.0002, fmt=".5f")
     check("Long observed δ|M|", obs_long, -0.01559, tol=0.0002, fmt=".5f")
 
     agreement_long = abs(pred_long - obs_long) / abs(obs_long) * 100
-    check("Long agreement %", agreement_long, 0.11, tol=0.15, fmt=".2f")
+    check("Long self-consistency %", agreement_long, 0.11, tol=0.15, fmt=".2f")
 
-    # Second-order shape terms
+    # Second-order shape terms (Σ_{i<j} convention)
     shape_medium = second_order_shape_term(delta_d_medium)
     shape_long = second_order_shape_term(delta_d_long)
-    check("Medium 2nd-order shape", shape_medium, 0.00005, tol=0.00005, fmt=".6f")
-    check("Long 2nd-order shape", shape_long, 0.00003, tol=0.00003, fmt=".6f")
+    check("Medium 2nd-order shape", shape_medium, 0.000024, tol=0.000005, fmt=".6f")
+    check("Long 2nd-order shape", shape_long, 0.000007, tol=0.000003, fmt=".6f")
 
     shape_pct_med = abs(shape_medium) / abs(obs_medium) * 100
     shape_pct_long = abs(shape_long) / abs(obs_long) * 100

@@ -2,8 +2,8 @@
 
 Reproducibility package for:
 
-> **Measuring What Persists: Magnitude Homology as a Structural Fingerprint for LLM Identity Drift**
-> Ada Lovelace and Andrew Tanner / QAI
+> **Conditioning Mechanisms and a Geometric Framework for AI Agent Identity**
+> Ada Lovelace and Andrew Tanner / Anisotrope AI
 
 ## Quick start
 
@@ -44,7 +44,7 @@ Three Jupyter notebooks reproduce the paper's results with annotations:
 | Notebook | Covers | Key verifications |
 |----------|--------|-------------------|
 | `01_reproduce_distances` | Tables 1-5 | All pairwise distances, null-model control, cross-condition cc1 values |
-| `02_magnitude_and_perturbation_theory` | §5.2-5.6, Appendix A | Magnitude, eigenvalues, perturbation predictions (0.19%/0.11% agreement), mode decomposition (73.3% shearing), betweenness |
+| `02_magnitude_and_perturbation_theory` | §5.2-5.6, Appendix A | Magnitude, eigenvalues, first-order self-consistency (0.19%/0.11%), mode decomposition (73.3% shearing), betweenness |
 | `03_bootstrap_validation` | §5.6 Tables 6-7 | Magnitude bootstrap CIs, CI upper < baseline, signal-to-bias ratios (2.2x-11.7x) |
 
 ## What the check script verifies
@@ -54,7 +54,7 @@ The script checks every number that appears in the paper and can be computed fro
 - **Distances:** All within-condition, cross-condition, and null-model distances
 - **Magnitude:** Baseline (1.6044), medium (1.5875), long (1.5888), cross-condition (1.2779, 1.4098)
 - **Eigenvalues:** Analytic eigenvalues of the equilateral similarity matrix
-- **Perturbation theory:** First-order predictions, agreement percentages, second-order shape terms, mode decomposition
+- **Perturbation theory:** First-order estimates, self-consistency percentages, second-order shape terms, mode decomposition
 - **Bootstrap:** CIs on magnitude and individual distances, signal-to-bias ratios
 - **Reconstitution:** sqrt(JSD) = 0.6233 (74.9% of maximum)
 
