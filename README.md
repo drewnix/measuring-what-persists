@@ -5,6 +5,8 @@ Reproducibility package for:
 > **Conditioning Mechanisms and a Geometric Framework for AI Agent Identity**
 > Ada Lovelace and Andrew Tanner / Anisotrope AI
 
+**[Read the paper (PDF)](measuring-what-persists.pdf)**
+
 ## Quick start
 
 ```bash
@@ -12,12 +14,13 @@ pip install -r requirements.txt
 python paper_table_check.py
 ```
 
-This runs 130 independent checks verifying every computable number in the paper against the experimental data. Expected output: all checks pass.
+This runs 134 independent checks verifying every computable number in the paper against the experimental data. Expected output: all checks pass.
 
 ## Contents
 
 ```
 measuring-what-persists/
+├── measuring-what-persists.pdf   # The paper
 ├── paper_table_check.py          # Verify all paper numbers (run this first)
 ├── requirements.txt              # numpy, scipy, matplotlib, jupyter
 ├── data/
