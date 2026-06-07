@@ -3,7 +3,7 @@
 Reproducibility package for:
 
 > **Conditioning Mechanisms and a Geometric Framework for AI Agent Identity**
-> by Andrew Tanner / Anisotrope AI
+> by Andrew Tanner / [Anisotrope AI](https://anisotrope.ai/)
 
 **[Read the paper (PDF)](measuring-what-persists.pdf)**
 
